@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-menu-button slot="start"></ion-menu-button>
+    <ion-title>Chart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-menu-button slot="start"></ion-menu-button>
+      <ion-title size="large">Chart</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <ion-select  [(ngModel)]="selected" (ionChange)="updateChart()">
+      <ion-select-option *ngFor="let x of selectOptions" [value]="x.value">{{x.name}}</ion-select-option>
+    </ion-select>
+    <ion-card>
+      <ion-card-header></ion-card-header>
+      <ion-card-content>
+        <canvas #lineCanvas id="lineCanvas" style="position: relative; height:20vh; width:40vw"></canvas>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
