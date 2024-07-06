@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { DBService } from 'src/app/services/db.service';
 import { Chart } from 'chart.js/auto';
 import { Resultado } from 'src/app/classes/resultado';
+import { Examen } from 'src/app/classes/examen';
 
 @Component({
   selector: 'app-chart-page',
@@ -11,20 +12,7 @@ import { Resultado } from 'src/app/classes/resultado';
 })
 export class ChartPage implements OnInit, AfterViewInit {
 
-  selectOptions = [
-    {
-      value: "vcm",
-      name: "VCM",
-      min: 80,
-      max: 100
-    },
-    {
-      value: "hemoglobina",
-      name: "Hemoglobina",
-      min: 12.1,
-      max: 15.5
-    }
-  ];
+  arregloEx: Examen[]=[];
   selected = "";
 
   @ViewChild('lineCanvas', {static: false}) private lineCanvas!: ElementRef;
@@ -45,6 +33,13 @@ export class ChartPage implements OnInit, AfterViewInit {
       if(res){
         this.db.fetchResultados().subscribe((item)=>{
           this.arregloResultados=item;
+        })
+      }
+    })
+    this.db.dbState().subscribe((res)=>{
+      if(res){
+        this.db.fetchExamenes().subscribe((item)=>{
+          this.arregloEx=item;
         })
       }
     })
@@ -166,8 +161,8 @@ export class ChartPage implements OnInit, AfterViewInit {
   }
 
   getMinMax(){
-    this.selectOptions.forEach((x)=>{
-      if(x.value==this.selected){
+    this.arregloEx.forEach((x)=>{
+      if(x.nombre==this.selected){
         this.min = Array.from(this.valores).fill(x.min)
         this.max = Array.from(this.valores).fill(x.max)
       }

@@ -13,6 +13,30 @@
     </ion-toolbar>
   </ion-header>
   <div id="container">
+    <ion-item>
+      <ion-label>Bienvenido, {{username}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" label="Altura (cm.) " [(ngModel)]="height" (ionInput)="calcularBMI()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" label="Peso (kg.)" [(ngModel)]="weight" (ionInput)="calcularBMI()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="BMI" disabled="true" [(ngModel)]="bmi" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Fecha de Nacimiento</ion-label>
+      <ion-datetime-button  datetime="fechnac"></ion-datetime-button>
+      <ion-modal [keepContentsMounted]="true">
+        <ng-template>
+          <ion-datetime id="fechnac" [(ngModel)]="fechnac" presentation="date" locale="es-ES" [firstDayOfWeek]="1" [showDefaultButtons]="true" (ionChange)="processFecha()">
+          </ion-datetime>
+        </ng-template>
+      </ion-modal>
+    </ion-item>
+    <ion-button (click)="guardarStorage()">Guardar</ion-button>
     
+  <ion-button (click)="cerrarSesion()" color="warning">Cerrar Sesión</ion-button>
   </div>
 </ion-content>

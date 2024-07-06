@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { Examen } from 'src/app/classes/examen';
 import { Resultado } from 'src/app/classes/resultado';
 import { DBService } from 'src/app/services/db.service';
 
@@ -10,16 +11,8 @@ import { DBService } from 'src/app/services/db.service';
 })
 export class ListaPage implements OnInit {
 
-  selectOptions = [
-    {
-      value: "vcm",
-      name: "VCM"
-    },
-    {
-      value: "hemoglobina",
-      name: "Hemoglobina"
-    }
-  ];
+  arregloEx: Examen[]=[];
+
   selected = "";
 
   arregloResultados: Resultado[] = []
@@ -31,6 +24,13 @@ export class ListaPage implements OnInit {
       if(res){
         this.db.fetchResultados().subscribe(item=>{
           this.arregloResultados=item;
+        })
+      }
+    })
+    this.db.dbState().subscribe((res)=>{
+      if(res){
+        this.db.fetchExamenes().subscribe(item=>{
+          this.arregloEx=item;
         })
       }
     })

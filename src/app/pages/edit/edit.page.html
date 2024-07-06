@@ -13,7 +13,9 @@
   <div id="container">
     <ion-list>
       <ion-item>
-        <ion-input label="Tipo" type="text" [(ngModel)]="inputTipo"></ion-input>
+        <ion-select [(ngModel)]="inputTipo">
+          <ion-select-option *ngFor="let x of arregloEx" [value]="x.nombre">{{x.nombre}}</ion-select-option>
+        </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>Fecha</ion-label>

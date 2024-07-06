@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Examen } from 'src/app/classes/examen';
 import { DBService } from 'src/app/services/db.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { DBService } from 'src/app/services/db.service';
   styleUrls: ['./edit.page.scss'],
 })
 export class EditPage implements OnInit {
+
+  arregloEx: Examen[]=[];
 
   inputID : any;
   inputTipo : any;

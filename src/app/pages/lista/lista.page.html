@@ -16,9 +16,9 @@
   <div id="container">
     <ion-item>
       <ion-select [(ngModel)]="selected">
-        <ion-select-option *ngFor="let x of selectOptions" [value]="x.value">{{x.name}}</ion-select-option>
+        <ion-select-option *ngFor="let x of arregloEx" [value]="x.nombre">{{x.nombre}}</ion-select-option>
       </ion-select>
-    </ion-item>    
+    </ion-item>
     <ion-list *ngFor="let x of arregloResultados">
       <ion-item-sliding *ngIf="x.tipo==selected">
         <ion-item>

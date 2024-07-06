@@ -13,6 +13,17 @@
     </ion-toolbar>
   </ion-header>
   <div id="container">
-    
+    <div *ngFor="let x of arregloEx">
+      <div *ngIf="x.alert==1">
+        <ion-card color="warning" >
+          <ion-card-header>
+            <ion-card-title>{{x.nombre}}</ion-card-title>
+          </ion-card-header>        
+          <ion-card-content>
+            La última medida de {{x.nombre}} esta fuera del rango esperado.<br> Recuerde consultar a su doctor.
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>    
   </div>
 </ion-content>

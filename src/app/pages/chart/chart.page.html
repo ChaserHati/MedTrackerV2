@@ -13,9 +13,11 @@
     </ion-toolbar>
   </ion-header>
   <div id="container">
-    <ion-select  [(ngModel)]="selected" (ionChange)="updateChart()">
-      <ion-select-option *ngFor="let x of selectOptions" [value]="x.value">{{x.name}}</ion-select-option>
-    </ion-select>
+    <ion-item>
+      <ion-select  [(ngModel)]="selected" (ionChange)="updateChart()">
+        <ion-select-option *ngFor="let x of arregloEx" [value]="x.nombre">{{x.nombre}}</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-card>
       <ion-card-header></ion-card-header>
       <ion-card-content>
