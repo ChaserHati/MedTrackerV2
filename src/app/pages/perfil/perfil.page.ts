@@ -36,7 +36,7 @@ export class PerfilPage implements OnInit {
   }
 
   calcularBMI(){
-    this.bmi = (this.weight/(this.height**2));
+    this.bmi = Number((this.weight/(this.height**2)).toFixed(2));
   }
 
   processFecha(){
@@ -50,6 +50,6 @@ export class PerfilPage implements OnInit {
   }
   cerrarSesion(){
     localStorage.clear();
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }
