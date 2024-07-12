@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class PerfilPage implements OnInit {
   public fechnac!: string;
   fechnacFormateada!: string;
+  nowDate= new Date();
   username!: string;
   height!: number;
   weight!: number;
@@ -29,7 +30,9 @@ export class PerfilPage implements OnInit {
     this.bmi = Number(localStorage.getItem('bmi'));
     if(localStorage.getItem('fechnac')!=null){
       this.fechnac=String(localStorage.getItem('fechnac'));
-    }    
+    } else {
+      this.fechnac= this.nowDate.toISOString();
+    }
   }
 
   calcularBMI(){
