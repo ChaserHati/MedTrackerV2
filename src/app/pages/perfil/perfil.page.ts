@@ -49,6 +49,10 @@ export class PerfilPage implements OnInit {
     localStorage.setItem('fechnac',this.fechnacFormateada);
   }
   cerrarSesion(){
+    this.height=0;
+    this.weight=0;
+    this.bmi=0;
+    this.fechnac=this.nowDate.toISOString();
     localStorage.clear();
     this.router.navigate(['/login']);
   }
