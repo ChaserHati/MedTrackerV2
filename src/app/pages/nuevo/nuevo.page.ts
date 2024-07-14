@@ -51,7 +51,7 @@ export class NuevoPage implements OnInit {
     } else if(this.selectedEx?.min==null&&this.selectedEx?.max!=null){
       return (this.selectedEx?.max<this.inputValor);
     } else if (this.selectedEx?.min!=null&&this.selectedEx?.max!=null){
-      return (this.inputValor<this.selectedEx?.min&&this.inputValor>this.selectedEx?.max);
+      return (this.inputValor<this.selectedEx?.min||this.inputValor>this.selectedEx?.max);
     } else {
       return false;
     }
